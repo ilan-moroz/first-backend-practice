@@ -1,0 +1,13 @@
+npm i [package name] // install package
+npm i --save-dev [package name] // saves in development
+npm i -g [package name] // saves globally
+npm i [package name]@latest // latest version
+npm i [package name]@4.5.1 // specific version
+================================================================
+npm init -y // package json
+npm i --save-dev nodemon //install nodemon(live server)
+npm i --save-dev ts-node//install typescript node
+================================================================
+"start":"nodemon --exec ts-node {FileName}.ts" // for package json(to start nodemon)
+================================================================
+npm i http // install http
