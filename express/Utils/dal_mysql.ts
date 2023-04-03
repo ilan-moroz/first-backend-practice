@@ -1,7 +1,7 @@
 import mysql from 'mysql'
-import config from './Config'
+import config from './config'
 
-//creating  a connection object
+//creating a conneciton object
 const connection = mysql.createPool({
   host: config.mySQLhost,
   user: config.mySQLuser,
@@ -9,17 +9,17 @@ const connection = mysql.createPool({
   database: config.mySQLdatabase,
 })
 
-console.log('connection created to mySQL')
-
-const execute = (Sql: string): Promise<any> => {
+const execute = (sql: string): Promise<any> => {
   return new Promise<any>((resolve, reject) => {
-    //execute the sql on MYSQL
-    connection.query(Sql, (err, result) => {
+    //connection and execute the sql command
+    connection.query(sql, (err, res) => {
       if (err) {
         reject(err)
         return
       }
-      resolve(result)
+
+      //no error, maya can go to satla
+      resolve(res)
     })
   })
 }

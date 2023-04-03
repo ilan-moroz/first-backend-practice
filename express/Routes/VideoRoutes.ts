@@ -1,19 +1,23 @@
+//הכרחי imports for our site.
 import cors from 'cors'
 import express, { NextFunction, Request, Response } from 'express'
-import fileUpload from 'express-fileUpload'
-// import config from './Utils/Config'
+import fileUpload from 'express-fileupload'
 import VideoLogic from '../Logic/VideoLogicMYSQL'
+import VideoLogicMYSQL from '../Logic/VideoLogicMYSQL'
 
-// REST:
-// GET => WWW.SOME-SHIT.CO.IL/LOGIN/?USER=JAMES&PASSWORD=12345 => UPTO 256 CHAR => NOT SECURED
-// POST => WWW.SOME-SHIT.CO.IL/LOGIN + BODY{'USER':'JAMES', 'PASSWORD':'12345} => UPTO 2GB => SECURED
-// PUT => LIKE POST BUT FOR UPDATE
-// DELETE => LIKE GET BUT FOR DELETE
+//REST :
+//GET    => www.johnbryce.co.il/login/?user=zeev&password=12345                   => upto 256 char
+//POST   => www.johnbryce.co.il/login  + body {'user':'zeev','password':'12345'}  => upto 2gb
+//PUT    => like post but for update
+//DELETE => like GET but for delete
 
-//addVideo => POST
+//{}
+
+//{videoId,videoURL,videoTitle,videoDescription,videoFile}
+//addVideo    => POST   ✅
 //deleteVideo => DELETE
-//videoList => GET
-//videoSelect => GET
+//videoList   => GET
+//videoSearch => GET
 //videoUpdate => PUT
 
 const router = express.Router()
@@ -21,29 +25,38 @@ const router = express.Router()
 router.post(
   '/addVideo',
   async (request: Request, response: Response, next: NextFunction) => {
-    const body = request.body
-    console.log('request body: ', body)
-    response.status(201).json("{'msg':'video was uploaded'}")
-  },
-)
-
-//URL=> https://localhost:8080/deleteVideo/5
-router.delete(
-  '/deleteVideo/:id',
-  async (request: Request, response: Response, next: NextFunction) => {
-    const videoId = +request.params.id
-    if (videoId === null || videoId < 1) {
-      response.status(404).json("{'msg':'video not found'}")
-    }
-    console.log('Deleting: ', videoId)
-    response.status(204)
+    //get the body, which represent our object
+    const newSong = request.body
+    //send the command to mysql
+    const result = await VideoLogicMYSQL.addSong(newSong)
+    //response to user
+    response.status(201).json(result)
   },
 )
 
 router.get(
-  '/videoList',
+  '/newCat/:catName',
   async (request: Request, response: Response, next: NextFunction) => {
-    response.status(200).json(await VideoLogic.videoList())
+    // console.log("in video routes");
+    // console.log(request.params.catName);
+    //const catName = request.body["name"];
+    response
+      .status(201)
+      .json(await VideoLogicMYSQL.addCategory(request.params.catName))
+  },
+)
+
+router.get(
+  '/allCat',
+  async (request: Request, response: Response, next: NextFunction) => {
+    response.status(200).json(await VideoLogicMYSQL.getAllCategories())
+  },
+)
+
+router.get(
+  '/',
+  async (request: Request, response: Response, next: NextFunction) => {
+    response.status(200).json('Controller working !!!')
   },
 )
 
