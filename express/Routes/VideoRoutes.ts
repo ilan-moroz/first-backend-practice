@@ -64,7 +64,7 @@ router.delete(
   async (request: Request, response: Response, next: NextFunction) => {
     const id = +request.params.id
     VideoLogic.deleteSong(id)
-    response.status(204)
+    response.status(204).json
   },
 )
 

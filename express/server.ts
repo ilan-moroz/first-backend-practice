@@ -42,5 +42,5 @@ server.use('*', ErrorHandler)
 
 //start the server
 server.listen(config.WebPort, () => {
-  console.log(`listinging on http://${config.mySQLhost}:${config.WebPort}`)
+  console.log(`listening on http://${config.mySQLhost}:${config.WebPort}`)
 })

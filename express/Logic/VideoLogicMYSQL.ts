@@ -29,7 +29,9 @@ const deleteSong = (id: number) => {
 
 const getSongById = (id: number) => {}
 
-const getAllSongs = () => {}
+const getAllSongs = () => {
+  const SQLcommand = `SELECT * FROM youtube.songs`
+}
 
 const createSongsTable = () => {
   const SQLcommand = `CREATE TABLE IF NOT EXISTS youtube.songs
