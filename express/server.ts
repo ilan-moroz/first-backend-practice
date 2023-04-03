@@ -5,9 +5,9 @@ import express from 'express'
 import fileUpload from 'express-fileupload'
 import loginRouter from './Routes/LoginRoutes'
 import router from './Routes/VideoRoutes'
-import config from './Utils/Config'
 import logic from './Logic/VideoLogicMYSQL'
 import ErrorHandler from './MiddleWare/route-not-found'
+import config from './Utils/config'
 
 //create server
 const server = express()
