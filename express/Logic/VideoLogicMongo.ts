@@ -1,28 +1,30 @@
-import Song from '../Models/Song'
+// import Song from '../Models/Song'
 
-// add song, update song,delete song,get song by id, get all songs
-// one time running: create table songs, create table categories
+// const videoListNoGood = () => {
+//   let videoList: string[] = []
+//   videoList.push('zeev')
+//   videoList.push('Nadav')
+//   videoList.push('Sagi')
+//   videoList.push('Maya')
+//   videoList.push('Omer')
+//   videoList.push('Matan')
 
-const addSong = (newSong: Song) => {}
+//   return videoList
+// }
 
-const updateSong = (song: Song) => {}
+// const videoList = async (): Promise<Song[]> => {
+//   let songsList: Song[] = []
+//   let song = new Song(
+//     'you tube',
+//     'this is not a love song',
+//     'http://yyy.nbbb.ddd',
+//     'romantic',
+//   )
+//   songsList.push(song)
+//   //get data from DB it's take time.... AWAIT
+//   return songsList
+// }
 
-const deleteSong = (id: number) => {}
+// const videoByName = (searchParamter: string) => {}
 
-const getSongById = (id: number) => {}
-
-const getAllSongs = () => {}
-
-const createSongsTable = () => {}
-
-const createCategoriesTable = () => {}
-
-export default {
-  addSong,
-  updateSong,
-  deleteSong,
-  getSongById,
-  getAllSongs,
-  createSongsTable,
-  createCategoriesTable,
-}
+// export default { videoList, videoByName }
