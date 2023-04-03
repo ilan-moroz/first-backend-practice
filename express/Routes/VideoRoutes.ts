@@ -60,4 +60,13 @@ router.get(
   },
 )
 
+router.delete(
+  '/delete/:id',
+  async (request: Request, response: Response, next: NextFunction) => {
+    const id = +request.params.id
+    VideoLogicMYSQL.deleteSong(id)
+    response.status(204)
+  },
+)
+
 export default router
